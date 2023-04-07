@@ -31,7 +31,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="nr_interno">Nome do Cliente</label>
+                                <label for="nome_cliente">Nome do Cliente</label>
                                 <input type="text" class="form-control" id="nome_cliente" name="nome_cliente"
                                     placeholder="Enter Nome do Cliente" value="{{ old('nome_cliente') }}">
                                 @error('nome_cliente')
@@ -42,8 +42,8 @@
                             </div>
                             <div style="display: flex;">
                                 <div class="form-group" style="flex: 50%; padding-right:1rem;">
-                                    <label for="nr_interno">Data Serviço</label>
-                                    <input type="text" class="form-control" id="data_servico" name="data_servico"
+                                    <label for="data_servico">Data Serviço</label>
+                                    <input type="date" class="form-control" id="data_servico" name="data_servico"
                                         placeholder="Enter Data Serviço" value="{{ old('data_servico') }}">
                                     @error('data_servico')
                                         <div class="alert alert-danger" role="alert">
@@ -71,16 +71,10 @@
                                 <div style="flex: 50%; padding-right:1rem;">
                                     <div class="form-group d-flex flex-column">
                                         <label>Tecnico</label>
-                                        <!-- a class="btn border" href="{{ route('infoTecnico') }}">Informações do Tecnico</a-->
                                         <button type="button" class="btn border" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdropTecnico">
                                             Informações do Tecnico
                                         </button>
-                                        @error('nome_cliente')
-                                            <div class="alert alert-danger" role="alert">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
                                         <!-- Modal -->
                                         <div class="modal fade" id="staticBackdropTecnico" data-bs-backdrop="static"
                                             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropTecnico"
@@ -104,7 +98,7 @@
                                 <div style="flex: 50%; padding-right:1rem;">
                                     <div class="form-group">
                                         <label for="nr_interno">Nr Interno</label>
-                                        <input type="text" class="form-control" id="nr_interno" name="nr_interno"
+                                        <input type="number" class="form-control" id="nr_interno" name="nr_interno"
                                             placeholder="Enter Nr Interno" value="{{ old('nr_interno') }}">
                                         @error('nr_interno')
                                             <div class="alert alert-danger" role="alert">
@@ -127,16 +121,10 @@
                             <div style="display: flex;">
                                 <div class="form-group d-flex flex-column" style="flex: 50%; padding-right:1rem;">
                                     <label>Agente</label>
-                                    <!-- a class="btn border" href= "{{ route('infoTipoAgenteExtintor') }}">Tipo de Agente Extintor</a-->
                                     <button type="button" class="btn border" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
                                         Tipo de Agente Extintor
                                     </button>
-                                    @error('nome_cliente')
-                                        <div class="alert alert-danger" role="alert">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                     <!-- Modal -->
                                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
@@ -148,8 +136,9 @@
                                 </div>
                                 <div class="form-group" style="flex: 50%; padding-right:1rem;">
                                     <label for="capacidade_kg">Capacidade Kg</label>
-                                    <input type="text" class="form-control" id="capacidade_kg" name="capacidade_kg"
-                                        placeholder="Enter Capacidade Kg" value="{{ old('capacidade_kg') }}">
+                                    <input type="number" min="0" step="0.001" class="form-control"
+                                        id="capacidade_kg" name="capacidade_kg" placeholder="Enter Capacidade Kg"
+                                        value="{{ old('capacidade_kg') }}">
                                     @error('capacidade_kg')
                                         <div class="alert alert-danger" role="alert">
                                             {{ $message }}
@@ -167,7 +156,7 @@
                                             Não
                                         </option>
                                     </select>
-                                    @error('persao_permanente6')
+                                    @error('persao_permanente')
                                         <div class="alert alert-danger" role="alert">
                                             {{ $message }}
                                         </div>
@@ -187,8 +176,9 @@
                             <div style="display: flex;">
                                 <div class="form-group" style="flex: 50%; padding-right:1rem;">
                                     <label for="ano_fabrico">Ano Fabrico</label>
-                                    <input type="text" class="form-control" id="ano_fabrico" name="ano_fabrico"
-                                        placeholder="Enter Ano Fabrico" value="{{ old('ano_fabrico') }}">
+                                    <input type="number" min="1990" max="2023" class="form-control"
+                                        id="ano_fabrico" name="ano_fabrico" placeholder="Enter Ano Fabrico"
+                                        value="{{ old('ano_fabrico') }}">
                                     @error('ano_fabrico')
                                         <div class="alert alert-danger" role="alert">
                                             {{ $message }}
@@ -206,7 +196,7 @@
                                             Não
                                         </option>
                                     </select>
-                                    @error('manutencao_MNT')
+                                    @error('marcacao_CE')
                                         <div class="alert alert-danger" role="alert">
                                             {{ $message }}
                                         </div>
@@ -226,8 +216,10 @@
                             <div style="display: flex;">
                                 <div class="form-group" style="flex: 50%; padding-right:1rem;">
                                     <label for="data_ultimo_carregamento">Data Ultimo Carregamento</label>
-                                    <input type="text" class="form-control" id="data_ultimo_carregamento"
-                                        name="data_ultimo_carregamento" placeholder="Enter Data Ultimo Carregamento"
+                                    <!--TODO: so poder inserir a data que não ultrapasse a do dia corrente, ou seja, a data da Assistencia-->
+                                    <!--Resolver Problema de data so poder ser ate a atual-->
+                                    <input type="date" max="2022-12-30" class="form-control"
+                                        id="data_ultimo_carregamento" name="data_ultimo_carregamento"
                                         value="{{ old('data_ultimo_carregamento') }}">
                                     @error('data_ultimo_carregamento')
                                         <div class="alert alert-danger" role="alert">
@@ -236,10 +228,9 @@
                                     @enderror
                                 </div>
                                 <div class="form-group" style="flex: 50%; padding-right:1rem;">
-                                    <label for="data_ultima_prova_hidraulica">Data Ultimo Carregamento</label>
-                                    <input type="text" class="form-control" id="data_ultima_prova_hidraulica"
-                                        name="data_ultima_prova_hidraulica"
-                                        placeholder="Enter Data Ultima Prova Hidraulica"
+                                    <label for="data_ultima_prova_hidraulica">Data Ultimo Prova Hidraulica</label>
+                                    <input type="date" max="2022-12-30" class="form-control"
+                                        id="data_ultima_prova_hidraulica" name="data_ultima_prova_hidraulica"
                                         value="{{ old('data_ultima_prova_hidraulica') }}">
                                     @error('data_ultima_prova_hidraulica')
                                         <div class="alert alert-danger" role="alert">
@@ -299,8 +290,9 @@
                                 </div>
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
                                     <label for="peso_CO2_kg">Nome Fabricante</label>
-                                    <input type="text" class="form-control" id="peso_CO2_kg" name="peso_CO2_kg"
-                                        placeholder="Enter Peso CO2 Kg" value="{{ old('peso_CO2_kg') }}">
+                                    <input type="number" min="0" step="0.001" class="form-control"
+                                        id="peso_CO2_kg" name="peso_CO2_kg" placeholder="Enter Peso CO2 Kg"
+                                        value="{{ old('peso_CO2_kg') }}">
                                     @error('peso_CO2_kg')
                                         <div class="alert alert-danger" role="alert">
                                             {{ $message }}

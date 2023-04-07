@@ -15,7 +15,7 @@ class AuthenticationController extends Controller
     public function login(Request $request){
         $request->validate([
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         $validated = auth()->attempt([
@@ -26,7 +26,7 @@ class AuthenticationController extends Controller
         if ($validated) {
             return redirect()->route('homePage')->with('success', 'Login Successfull');
         } else {
-            return redirect()->back()->with('error', 'Invalid credentials');
+            return redirect()->back()->with('failure', 'Invalid credentials');
         }
     }
 }

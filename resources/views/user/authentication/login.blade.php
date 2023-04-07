@@ -10,13 +10,10 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <!--link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css"-->
     <link rel="stylesheet" href="{{ asset('user-assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- icheck bootstrap -->
-    <!--link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css"-->
     <link rel="stylesheet" href="{{ asset('user-assets/plugins/icheck-bootstrap/icheck.min.css') }}">
     <!-- Theme style -->
-    <!--link rel="stylesheet" href="../../dist/css/adminlte.min.css"-->
     <link rel="stylesheet" href="{{ asset('user-assets/dist/css/adminlte.min.css') }}">
 </head>
 
@@ -29,16 +26,18 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Bem-vindo ao GESFaturação</p>
+                @if (Session::has('failure'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get('failure') }}
+                    </div>
+                @endif
                 <!---Sign in to start your session-->
-
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     <!-- @method('post') -->
                     <div class="input-group mb-3">
-                        <input name="email" type="email" class="form-control" placeholder="Email">
-                        <!-- @if ($errors->has('email'))
-<p class="text-danger">{{ $errors->first('email') }}</p>
-@endif -->
+                        <input name="email" type="email" class="form-control" placeholder="Email"
+                            value="{{ old('email') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -46,13 +45,10 @@
                         </div>
                     </div>
                     @error('email')
-                        <div class="text-danger">{{ $message }}</div>
+                        <div class="text-danger" style="text-align: center;">{{ $message }}</div>
                     @enderror
                     <div class="input-group mb-3">
                         <input name="password" type="password" class="form-control" placeholder="Password">
-                        <!-- @if ($errors->has('password'))
-<p class="text-danger">{{ $errors->first('password') }}</p>
-@endif -->
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -60,11 +56,11 @@
                         </div>
                     </div>
                     @error('password')
-                        <div class="text-danger">{{ $message }}</div>
+                        <div class="text-danger" style="text-align: center;">{{ $message }}</div>
                     @enderror
                     <div class="row">
                         <div class="col-8">
-                            
+
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
@@ -80,13 +76,10 @@
     <!-- /.login-box -->
 
     <!-- jQuery -->
-    <!--script src="../../plugins/jquery/jquery.min.js"></script-->
     <script src="{{ asset('user-assets/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
-    <!--script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script-->
     <script src="{{ asset('user-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <!--script src="../../dist/js/adminlte.min.js"></script-->
     <script src="{{ asset('user-assets/dist/js/adminlte.min.js') }}"></script>
 </body>
 

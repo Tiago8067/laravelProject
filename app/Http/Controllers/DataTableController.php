@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\DataTable;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 
 class DataTableController extends Controller

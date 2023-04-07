@@ -13,7 +13,8 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Tabela das Assistencias Técnicas</h3>
-                            <a style="margin-right:10%;float: right;" href="{{ route('addDataTable') }}" class="btn btn-primary">Add
+                            <a style="margin-right:10%;float: right;" href="{{ route('addDataTable') }}"
+                                class="btn btn-primary">Add
                                 Assistencia</a>
                         </div>
                         @if (Session::has('success'))
@@ -40,6 +41,25 @@
                                     @php
                                         $i = 1;
                                     @endphp
+
+                                    @foreach ($data as $assis)
+                                        <tr>
+                                            <td> {{ $i++ }} </td>
+                                            <td> {{ $assis->nome_comercial }} </td>
+                                            <td> {{ $assis->nome_cliente }} </td>
+                                            <td> {{ $assis->data_servico }} </td>
+                                            <td> {{ $assis->data_ultimo_carregamento }} </td>
+                                            <td>
+                                                <i class="bi bi-eye-fill p-1"></i>
+                                                <i class="bi bi-printer p-1"></i>
+                                                <i class="bi bi-send-fill p-1"></i>
+                                            </td>
+                                            <td>
+                                                <a href=" " class="btn btn-primary">Edit</a> |
+                                                <a href=" " class="btn btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
                                 </tbody>
                                 <tfoot>

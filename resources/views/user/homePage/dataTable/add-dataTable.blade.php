@@ -17,11 +17,11 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start  method="post" action="" -->
-                    <form>
+                    <form method="post" action="{{ route('saveDataTable') }}">
                         @csrf
                         <div class=" card-body">
                             <div class="form-group">
-                                <label for="nr_interno">Nome do Comercial</label>
+                                <label for="nome_comercial">Nome do Comercial</label>
                                 <input type="text" class="form-control" id="nome_comercial" name="nome_comercial"
                                     placeholder="Enter Nome do Comercial" value="{{ old('nome_comercial') }}">
                                 @error('nome_comercial')

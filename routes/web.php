@@ -23,9 +23,8 @@ Route::post('/user/login',[AuthenticationController::class,'login'])->name('logi
 
 Route::get('/user/homePage', [HomePageController::class, 'homePage'])->name('homePage');
 Route::get('/user/logout', [HomePageController::class, 'logout'])->name('logout');
-
-Route::get('/user/add-dataTable', [DataTableController::class, 'addDataTable'])->name('addDataTable');
+Route::get('/user/add-dataTable', [HomePageController::class, 'addDataTable'])->name('addDataTable');
 Route::post('/user/save-dataTable', [HomePageController::class, 'saveDataTable'])->name('saveDataTable');
 
-Route::get('/user/add-dataTable/info-tecnico', [DataTableController::class, 'infoTecnico'])->name('infoTecnico');
-Route::get('/user/add-dataTable/info-tipo-agente-extintor', [DataTableController::class, 'infoTipoAgenteExtintor'])->name('infoTipoAgenteExtintor');
+// Route::get('/user/add-dataTable/info-tecnico', [DataTableController::class, 'infoTecnico'])->name('infoTecnico');
+// Route::get('/user/add-dataTable/info-tipo-agente-extintor', [DataTableController::class, 'infoTipoAgenteExtintor'])->name('infoTipoAgenteExtintor');

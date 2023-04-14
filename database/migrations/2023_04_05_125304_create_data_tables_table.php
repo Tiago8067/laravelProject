@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('data_tables', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->string('nome_comercial');
             $table->string('nome_cliente');
             $table->date('data_servico');
@@ -47,7 +47,7 @@ return new class extends Migration
             $table->boolean('extintor_novo');
             $table->text('motivo_rejeitado');
 
-            $table->foreign('user_id')->references('id')->on('users'); //->onDelete()
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

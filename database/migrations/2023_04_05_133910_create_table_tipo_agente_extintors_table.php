@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('table_tipo_agente_extintors', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('data_table_id');
+            $table->unsignedBigInteger('data_table_id')->unique();
             $table->string('nome');
 
             $table->foreign('data_table_id')->references('id')->on('data_tables')->delete('cascade');

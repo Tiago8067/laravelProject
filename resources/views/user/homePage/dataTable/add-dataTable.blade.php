@@ -16,7 +16,7 @@
                         @endif
                     </div>
                     <!-- /.card-header -->
-                    <form method="post" action="{{ route('saveDataTable') }}">
+                    <form action="{{ route('saveDataTable') }}" method="post">
                         @csrf
                         
                         <div class=" card-body">
@@ -55,10 +55,9 @@
                                     <label for="viatura_ou_loja">Executado em</label>
                                     <select class="custom-select form-control-border" id="viatura_ou_loja"
                                         name="viatura_ou_loja">
-                                        <option value="1" @if (old('active') == 1) selected @endif>Viatura
-                                        </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>Loja
-                                        </option>
+                                        <option selected></option>
+                                        <option>Viatura</option>
+                                        <option>Loja</option>
                                     </select>
                                     @error('viatura_ou_loja')
                                         <div class="alert alert-danger" role="alert">
@@ -69,21 +68,21 @@
                             </div>
                             <div style="display: flex;">
                                 <div style="flex: 50%; padding-right:1rem;">
-                                    <!--div class="form-group d-flex flex-column">
+                                    {{-- <div class="form-group d-flex flex-column">
                                         <label>Tecnico</label>
                                         <button type="button" class="btn border" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdropTecnico">
-                                            Informações do Tecnico
+                                            Insira as Informações do Tecnico
                                         </button>
                                         <!-- Modal -->
-                                        <!--div class="modal fade" id="staticBackdropTecnico" data-bs-backdrop="static"
+                                        <div class="modal fade" id="staticBackdropTecnico" data-bs-backdrop="static"
                                             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropTecnico"
                                             aria-hidden="true">
                                             <div class="modal-dialog">
                                                 @include('user.homePage.dataTable.info-tecnico')
                                             </div>
                                         </div>
-                                    </div-->
+                                    </div> --}}
                                     <div class="form-group">
                                         <label for="observacao">Observação</label>
                                         <textarea type="text" class="form-control" id="observacao" name="observacao" placeholder="Enter Observação"
@@ -119,21 +118,21 @@
                                 </div>
                             </div>
                             <div style="display: flex;">
-                                <!--div class="form-group d-flex flex-column" style="flex: 50%; padding-right:1rem;">
+                                {{-- <div class="form-group d-flex flex-column" style="flex: 50%; padding-right:1rem;">
                                     <label>Agente</label>
                                     <button type="button" class="btn border" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
-                                        Tipo de Agente Extintor
+                                        Insira o Tipo de Agente Extintor
                                     </button>
                                     <!-- Modal -->
-                                    <!--div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
                                         <div class="modal-dialog">
                                             @include('user.homePage.dataTable.info-tipo-agente-extintor')
                                         </div>
                                     </div>
-                                </div-->
+                                </div> --}}
                                 <div class="form-group" style="flex: 50%; padding-right:1rem;">
                                     <label for="capacidade_kg">Capacidade Kg</label>
                                     <input type="number" min="0" step="0.001" class="form-control"
@@ -149,10 +148,11 @@
                                     <label for="persao_permanente">Persão Permanente</label>
                                     <select class="custom-select form-control-border" id="persao_permanente"
                                         name="persao_permanente">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -189,10 +189,11 @@
                                     <label for="marcacao_CE">Marcação CE</label>
                                     <select class="custom-select form-control-border" id="marcacao_CE"
                                         name="marcacao_CE">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -216,7 +217,7 @@
                             <div style="display: flex;">
                                 <div class="form-group" style="flex: 50%; padding-right:1rem;">
                                     <label for="data_ultimo_carregamento">Data Ultimo Carregamento</label>
-                                    <!--TODO: so poder inserir a data que não ultrapasse a do dia corrente, ou seja, a data da Assistencia-->
+                                    <!--so poder inserir a data que não ultrapasse a do dia corrente, ou seja, a data da Assistencia-->
                                     <!--Resolver Problema de data so poder ser ate a atual-->
                                     <input type="date" max="2022-12-30" class="form-control"
                                         id="data_ultimo_carregamento" name="data_ultimo_carregamento"
@@ -244,10 +245,11 @@
                                     <label for="manutencao_MNT">Manutenção MNT</label>
                                     <select class="custom-select form-control-border" id="manutencao_MNT"
                                         name="manutencao_MNT">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -261,10 +263,11 @@
                                     <label for="carregamento_MNT_AD">Manutenção MNT AD</label>
                                     <select class="custom-select form-control-border" id="carregamento_MNT_AD"
                                         name="carregamento_MNT_AD">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -277,9 +280,12 @@
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
                                     <label for="tipo">Tipo</label>
                                     <select class="custom-select form-control-border" id="tipo" name="tipo">
-                                        <option>C
+                                        <option selected></option>
+                                        <option>
+                                            C
                                         </option>
-                                        <option>S
+                                        <option>
+                                            S
                                         </option>
                                     </select>
                                     @error('tipo')
@@ -289,7 +295,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
-                                    <label for="peso_CO2_kg">Nome Fabricante</label>
+                                    <label for="peso_CO2_kg">Peso CO2 Kg</label>
                                     <input type="number" min="0" step="0.001" class="form-control"
                                         id="peso_CO2_kg" name="peso_CO2_kg" placeholder="Enter Peso CO2 Kg"
                                         value="{{ old('peso_CO2_kg') }}">
@@ -305,10 +311,11 @@
                                     <label for="prova_hidraulica">Prova Hidraulica</label>
                                     <select class="custom-select form-control-border" id="prova_hidraulica"
                                         name="prova_hidraulica">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -322,10 +329,11 @@
                                     <label for="selo_seguranca">Selo Segurança</label>
                                     <select class="custom-select form-control-border" id="selo_seguranca"
                                         name="selo_seguranca">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -338,10 +346,11 @@
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
                                     <label for="O_Ring">O Ring</label>
                                     <select class="custom-select form-control-border" id="O_Ring" name="O_Ring">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -354,10 +363,11 @@
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
                                     <label for="cavilha">Cavilha</label>
                                     <select class="custom-select form-control-border" id="cavilha" name="cavilha">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -372,10 +382,11 @@
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
                                     <label for="manometro">Manometro</label>
                                     <select class="custom-select form-control-border" id="manometro" name="manometro">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -388,10 +399,11 @@
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
                                     <label for="difusor">Difusor</label>
                                     <select class="custom-select form-control-border" id="difusor" name="difusor">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -405,10 +417,11 @@
                                     <label for="base_plastica">Base Plástica</label>
                                     <select class="custom-select form-control-border" id="base_plastica"
                                         name="base_plastica">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -421,10 +434,11 @@
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
                                     <label for="rotulo">Rotulo</label>
                                     <select class="custom-select form-control-border" id="rotulo" name="rotulo">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -440,10 +454,11 @@
                                     <label for="sparklets_CO2">Sparklets CO2</label>
                                     <select class="custom-select form-control-border" id="sparklets_CO2"
                                         name="sparklets_CO2">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -456,10 +471,11 @@
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
                                     <label for="aprovado">Aprovado</label>
                                     <select class="custom-select form-control-border" id="aprovado" name="aprovado">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>
@@ -472,9 +488,12 @@
                                 <div class="form-group" style="flex: 25%; padding-right:1rem;">
                                     <label for="serv_carga">Serviço ou Carga</label>
                                     <select class="custom-select form-control-border" id="serv_carga" name="serv_carga">
-                                        <option>Serviço
+                                        <option selected></option>
+                                        <option>
+                                            Serviço
                                         </option>
-                                        <option>Carga
+                                        <option>
+                                            Carga
                                         </option>
                                     </select>
                                     @error('serv_carga')
@@ -487,10 +506,11 @@
                                     <label for="extintor_novo">Extintor Novo</label>
                                     <select class="custom-select form-control-border" id="extintor_novo"
                                         name="extintor_novo">
-                                        <option value="1" @if (old('active') == 1) selected @endif>
+                                        <option selected></option>
+                                        <option value="1" @if (old('active') == 1) @endif>
                                             Sim
                                         </option>
-                                        <option value="0" @if (old('active') == 0) selected @endif>
+                                        <option value="0" @if (old('active') == 0) @endif>
                                             Não
                                         </option>
                                     </select>

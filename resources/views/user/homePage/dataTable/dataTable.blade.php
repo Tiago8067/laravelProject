@@ -42,13 +42,13 @@
                                         $i = 1;
                                     @endphp
 
-                                    @foreach ($data as $assis)
+                                    @foreach ($data as $assistencia)
                                         <tr>
                                             <td> {{ $i++ }} </td>
-                                            <td> {{ $assis->nome_comercial }} </td>
-                                            <td> {{ $assis->nome_cliente }} </td>
-                                            <td> {{ $assis->data_servico }} </td>
-                                            <td> {{ $assis->data_ultimo_carregamento }} </td>
+                                            <td> {{ $assistencia->nome_comercial }} </td>
+                                            <td> {{ $assistencia->nome_cliente }} </td>
+                                            <td> {{ $assistencia->data_servico }} </td>
+                                            <td> {{ $assistencia->data_ultimo_carregamento }} </td>
                                             <td>
                                                 <i class="bi bi-eye-fill p-1"></i>
                                                 <i class="bi bi-printer p-1"></i>

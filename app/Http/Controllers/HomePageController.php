@@ -15,6 +15,7 @@ class HomePageController extends Controller
         // $data = DataTable::get();
         $data = DataTable::all();
 
+        // return $data;
         return view('user.homePage.dataTable.dataTable', compact('data'));
     }
 
@@ -27,48 +28,91 @@ class HomePageController extends Controller
     public function addDataTable()
     {
         $user = User::all();
+        // return $user;
         return view('user.homePage.dataTable.add-dataTable', compact('user'));
     }
 
     public function saveDataTable(Request $request)
     {
-        // $user_id = User::findOrFail($request->user_id);
-        // $request->validate([
-        //     'nome_comercial' => 'required',
-        //     'nome_cliente' => 'required',
-        //     'data_servico' => 'required',
-        //     'viatura_ou_loja' => 'required',
-        //     'observacao' => 'required',
-        //     'nr_interno' => 'required',
-        //     'nr_serie' => 'required',
-        //     'capacidade_kg' => 'required',
-        //     'persao_permanente' => 'required',
-        //     'nome_fabricante' => 'required',
-        //     'ano_fabrico' => 'required',
-        //     'marcacao_CE' => 'required',
-        //     'localizacao' => 'required',
-        //     'data_ultimo_carregamento' => 'required',
-        //     'data_ultima_prova_hidraulica' => 'required',
-        //     'manutencao_MNT' => 'required',
-        //     'carregamento_MNT_AD' => 'required',
-        //     'tipo' => 'required',
-        //     'peso_CO2_kg' => 'required',
-        //     'prova_hidraulica' => 'required',
-        //     'selo_seguranca' => 'required',
-        //     'O_Ring' => 'required',
-        //     'cavilha' => 'required',
-        //     'manometro' => 'required',
-        //     'difusor' => 'required',
-        //     'base_plastica' => 'required',
-        //     'rotulo' => 'required',
-        //     'sparklets_CO2' => 'required',
-        //     'aprovado' => 'required',
-        //     'serv_carga' => 'required',
-        //     'extintor_novo' => 'required',
-        //     'motivo_rejeitado' => 'required',
-        // ]);
+        $request->validate([
+            'nome_comercial' => 'required',
+            'nome_cliente' => 'required',
+            'data_servico' => 'required',
+            'viatura_ou_loja' => 'required',
+            'observacao' => 'required',
+            'nr_interno' => 'required',
+            'nr_serie' => 'required',
+            'capacidade_kg' => 'required',
+            'persao_permanente' => 'required',
+            'nome_fabricante' => 'required',
+            'ano_fabrico' => 'required',
+            'marcacao_CE' => 'required',
+            'localizacao' => 'required',
+            'data_ultimo_carregamento' => 'required',
+            'data_ultima_prova_hidraulica' => 'required',
+            'manutencao_MNT' => 'required',
+            'carregamento_MNT_AD' => 'required',
+            'tipo' => 'required',
+            'peso_CO2_kg' => 'required',
+            'prova_hidraulica' => 'required',
+            'selo_seguranca' => 'required',
+            'O_Ring' => 'required',
+            'cavilha' => 'required',
+            'manometro' => 'required',
+            'difusor' => 'required',
+            'base_plastica' => 'required',
+            'rotulo' => 'required',
+            'sparklets_CO2' => 'required',
+            'aprovado' => 'required',
+            'serv_carga' => 'required',
+            'extintor_novo' => 'required',
+            'motivo_rejeitado' => 'required',
+        ]);
 
         // dd($request->all());
+
+        $data_table_column = DataTable::findOrFail($request->user_id);
+
+        return $data_table_column;
+        $data_table_column->dataTables()->create([
+            'nome_comercial' => $request->nome_comercial,
+            // 'nome_cliente' => strip_tags($request->input('nome_cliente')),
+            'nome_cliente' => $request->nome_cliente,
+            'data_servico' => $request->data_servico,
+            'viatura_ou_loja' => $request->viatura_ou_loja,
+            'observacao' => $request->observacao,
+            'nr_interno' => $request->nr_interno,
+            'nr_serie' => $request->nr_serie,
+            'capacidade_kg' => $request->capacidade_kg,
+            'persao_permanente' => $request->persao_permanente,
+            'nome_fabricante' => $request->nome_fabricante,
+            'ano_fabrico' => $request->ano_fabrico,
+            'marcacao_CE' => $request->marcacao_CE,
+            'localizacao' => $request->localizacao,
+            'data_ultimo_carregamento' => $request->data_ultimo_carregamento,
+            'data_ultima_prova_hidraulica' => $request->data_ultima_prova_hidraulica,
+            'manutencao_MNT' => $request->manutencao_MNT,
+            'carregamento_MNT_AD' => $request->carregamento_MNT_AD,
+            'tipo' => $request->tipo,
+            'peso_CO2_kg' => $request->peso_CO2_kg,
+            'prova_hidraulica' => $request->prova_hidraulica,
+            'selo_seguranca' => $request->selo_seguranca,
+            'O_Ring' => $request->O_Ring,
+            'cavilha' => $request->cavilha,
+            'manometro' => $request->manometro,
+            'difusor' => $request->difusor,
+            'base_plastica' => $request->base_plastica,
+            'rotulo' => $request->rotulo,
+            'sparklets_CO2' => $request->sparklets_CO2,
+            'aprovado' => $request->aprovado,
+            'serv_carga' => $request->serv_carga,
+            'extintor_novo' => $request->extintor_novo,
+            'motivo_rejeitado' => $request->motivo_rejeitado,
+        ]);
+
+        // dd($data_table_column);
+
+        // return $data_table_column;
 
         // $nome_comercial = $request->nome_comercial;
         // $nome_cliente = $request->nome_cliente;
@@ -138,7 +182,7 @@ class HomePageController extends Controller
         // $assis->motivo_rejeitado = $motivo_rejeitado;
         // $assis->save();
 
-        return redirect()->route('homePage')->with('success', 'Assistencia Added Successfully');
+        // return redirect()->route('homePage')->with('success', 'Assistencia Added Successfully');
         //return redirect('/user/homePage')->with('success', 'Assistencia Added Successfully');
         //return redirect()->back(); -> retorna para o add-dataTable
     }

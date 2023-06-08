@@ -68,7 +68,7 @@
                             </div>
                             <div style="display: flex;">
                                 <div style="flex: 50%; padding-right:1rem;">
-                                    {{-- <div class="form-group d-flex flex-column">
+                                    <div class="form-group d-flex flex-column">
                                         <label>Tecnico</label>
                                         <button type="button" class="btn border" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdropTecnico">
@@ -82,7 +82,7 @@
                                                 @include('user.homePage.dataTable.info-tecnico')
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div class="form-group">
                                         <label for="observacao">Observação</label>
                                         <textarea type="text" class="form-control" id="observacao" name="observacao" placeholder="Enter Observação"
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <div style="display: flex;">
-                                {{-- <div class="form-group d-flex flex-column" style="flex: 50%; padding-right:1rem;">
+                                <div class="form-group d-flex flex-column" style="flex: 50%; padding-right:1rem;">
                                     <label>Agente</label>
                                     <button type="button" class="btn border" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
@@ -132,7 +132,7 @@
                                             @include('user.homePage.dataTable.info-tipo-agente-extintor')
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="form-group" style="flex: 50%; padding-right:1rem;">
                                     <label for="capacidade_kg">Capacidade Kg</label>
                                     <input type="number" min="0" step="0.001" class="form-control"
